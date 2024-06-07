@@ -10,7 +10,7 @@ const handleQuery = (req, res, next) => {
   if (Category) {
     req.filter.Category = Category;
   }
-
+  
   if (color) {
     req.filter.color = color;
   }

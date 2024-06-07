@@ -1,10 +1,10 @@
 const aysncHandler = require("express-async-handler");
-const Product = require("../Product");
+const Product = require("../Models/Product");
 
 const fetchHomeProducts = async (req, res) => {
   try {
     let data = await Product.find({ Latest: true });
-    res.status(200).json({ success: true, data: data });
+    res.status(200).json({ success: true, products: data });
   } catch (error) {
     console.error(error);
     res.status(500).send("Internal Server Error");
@@ -13,7 +13,7 @@ const fetchHomeProducts = async (req, res) => {
 const fetchWomenProducts=async(req,res)=>{
     try {
         let data = await Product.find({ gender: "Women" }).limit(4);
-        res.send(data);
+        res.status(200).json({ success: true, products: data });
       } catch (error) {
         console.error(error);
         res.status(500).send("Internal Server Error");
